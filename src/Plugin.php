@@ -42,6 +42,18 @@ class Plugin implements PluginInterface, EventSubscriberInterface
         $this->io = $io;
     }
 
+    public function deactivate(Composer $composer, IOInterface $io)
+    {
+        // https://getcomposer.org/upgrade/UPGRADE-2.0.md
+        // Plugins implementing EventSubscriberInterface will be deregistered from the EventDispatcher
+        // automatically when being deactivated, nothing to do there.
+    }
+
+    public function uninstall(Composer $composer, IOInterface $io)
+    {
+        // Nothing to uninstall
+    }
+
     public static function getSubscribedEvents()
     {
         return [
